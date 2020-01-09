@@ -1,0 +1,27 @@
+# -*- mode: sh -*-
+
+# ranger-cd
+# author: Seong Yong-ju <sei40kr@gmail.com>
+
+ranger-cd() {
+    if zle; then
+        # To avoid "Must run ranger from terminal"
+        BUFFER="ranger-cd"
+        zle accept-line
+        return
+    fi
+
+    local tmpfile="$(mktemp -p "${TMPDIR:-/tmp}" tmp.XXXXXX)"
+    ranger --choosedir="$tmpfile" --show-only-dirs
+
+    local dir="$(cat "$tmpfile")"
+    if [[ -n "$dir" ]]; then
+        cd "$dir"
+    else
+        return 1
+    fi
+
+    rm -f "$tmpfile"
+}
+
+ranger-cd "$@"
