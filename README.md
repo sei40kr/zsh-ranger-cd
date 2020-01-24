@@ -8,15 +8,15 @@ Choose the working directory using ranger.
 
 ## Install
 
-### Install with [zplugin](https://github.com/zdharma/zplugin) (recommended)
+### Install with [zinit](https://github.com/zdharma/zinit) (recommended)
 
 ```sh
-zplugin light sei40kr/zsh-ranger-cd
+zinit light sei40kr/zsh-ranger-cd
 bindkey '\ec' ranger-cd
 
 # If you use fzf, make sure the key bindings don't conflict
-zplugin ice bindmap'\ec ->' src'shell/key-bindings.zsh'
-zplugin light -b junegunn/fzf
+zinit ice bindmap'\ec ->' src'shell/key-bindings.zsh'
+zinit light -b junegunn/fzf
 ```
 
 ### Install with [zplug](https://github.com/zplug/zplug)
